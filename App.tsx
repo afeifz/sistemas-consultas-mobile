@@ -73,11 +73,102 @@ function formatarData(data: Date): string {
 }
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Open up ppo start working on your app!</Text>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
+      
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Cabeçalho */}
+        <View style={styles.header}>
+          <Text style={styles.titulo}>Sistema de Consultas</Text>
+          <Text style={styles.subtitulo}>Consulta #{consulta.id}</Text>
+        </View>
+
+        {/* Card da Consulta */}
+        <View style={styles.card}>
+          {/* Status Badge */}
+          <View style={[
+            styles.statusBadge,
+            consulta.status === "confirmada" && styles.statusConfirmada,
+            consulta.status === "cancelada" && styles.statusCancelada,
+          ]}>
+            <Text style={styles.statusTexto}>{consulta.status.toUpperCase()}</Text>
+          </View>
+
+           {/* Informações do Médico */}
+          <View style={styles.secao}>
+            <Text style={styles.label}>👨‍⚕️ Médico</Text>
+            <Text style={styles.valor}>{consulta.medico.nome}</Text>
+            <Text style={styles.info}>CRM: {consulta.medico.crm}</Text>
+            <Text style={styles.info}>{consulta.medico.especialidade.nome}</Text>
+          </View>
+
+           {/* Informações do Paciente */}
+          <View style={styles.secao}>
+            <Text style={styles.label}>👤 Paciente</Text>
+            <Text style={styles.valor}>{consulta.paciente.nome}</Text>
+            <Text style={styles.info}>CPF: {consulta.paciente.cpf}</Text>
+            <Text style={styles.info}>Email: {consulta.paciente.email}</Text>
+            {consulta.paciente.telefone && (
+              <Text style={styles.info}>Tel: {consulta.paciente.telefone}</Text>
+            )}
+          </View>
+
+           {/* Informações da Consulta */}
+          <View style={styles.secao}>
+            <Text style={styles.label}>📅 Dados da Consulta</Text>
+            <Text style={styles.valor}>Data: {formatarData(consulta.data)}</Text>
+            <Text style={styles.valor}>Valor: {formatarValor(consulta.valor)}</Text>
+            {consulta.observacoes && (
+              <Text style={styles.observacoes}>{consulta.observacoes}</Text>
+            )}
+          </View>
+
+          {/* Botões de Ação */}
+          <View style={styles.acoes}>
+            {consulta.status === "agendada" && (
+              <>
+                <View style={styles.botaoContainer}>
+                  <Button
+                    title="Confirmar Consulta"
+                    onPress={confirmarConsulta}
+                    color="#4CAF50"
+                  />
+                </View>
+                <View style={styles.botaoContainer}>
+                  <Button
+                    title="Cancelar Consulta"
+                    onPress={cancelarConsulta}
+                    color="#F44336"
+                  />
+                </View>
+              </>
+            )}
+
+            {consulta.status === "confirmada" && (
+              <View style={styles.mensagem}>
+                <Text style={styles.mensagemTexto}>✓ Consulta confirmada com sucesso!</Text>
+              </View>
+            )}
+            {consulta.status === "cancelada" && (
+              <View style={styles.mensagemCancelada}>
+                <Text style={styles.mensagemTexto}>✗ Consulta cancelada</Text>
+              </View>
+            )}
+          </View>
+        </View>
+      </ScrollView>
     </View>
+  
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor:"#79059C"
+  }});
+
+
+
 
 
 
