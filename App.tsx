@@ -7,15 +7,7 @@ import { Consulta } from "./src/interfaces/consulta";
 import { useState } from "react";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.titulo}>Open up ppo start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
+  const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#814141',
@@ -79,6 +71,15 @@ function formatarValor(valor: number): string {
 function formatarData(data: Date): string {
   return data.toLocaleDateString("pt-BR");
 }
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titulo}>Open up ppo start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+
 
 
 
