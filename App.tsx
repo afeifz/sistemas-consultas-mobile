@@ -62,7 +62,23 @@ const [consulta, setConsulta] = useState<Consulta>({
   observacoes: "Consulta de rotina",
 });
 
+function confirmarConsulta() {
+  setConsulta({
+    ...consulta,
+    status: "confirmada",
+  });
+}
 
+function formatarValor(valor: number): string {
+  return valor.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+}
+
+function formatarData(data: Date): string {
+  return data.toLocaleDateString("pt-BR");
+}
 
 
 
