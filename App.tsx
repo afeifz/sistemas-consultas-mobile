@@ -1,28 +1,19 @@
-/**
- * App.tsx - Aplicativo de Consultas Médicas
- * Versão 3: Componentização
- * 
- * Evolução:
- * Aula 1 (26/02) → MVP Simples
- * Aula 2 (04/03) → Integração TypeScript
- * Aula 3 (06/03) → Componentização VOCÊ ESTÁ AQUI
- */
 
 import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
-// Importando a modelagem TypeScript
+
 import { Especialidade } from "./src/types/especialidade";
 import { Paciente } from "./src/types/paciente";
 import { Medico } from "./src/interfaces/medico";
 import { Consulta } from "./src/interfaces/consulta";
 
-// Importando o componente reutilizável
-import ConsultaCard from "./src/components/consultaCard";
+
+import { ConsultaCard } from "./src/components/";
 
 export default function App() {
-  // Dados base (simulando o que tínhamos no backend)
+  
   const cardiologia: Especialidade = {
     id: 1,
     nome: "Cardiologia",
@@ -56,13 +47,7 @@ export default function App() {
     observacoes: "Consulta de rotina",
   });
 
-  /**
-   * Funções para manipular a consulta
-   * 
-   * Essas funções serão passadas como props para o componente.
-   * O componente não altera o estado diretamente - ele apenas
-   * "comunica" ao pai (App) que uma ação foi solicitada.
-   */
+ 
   function confirmarConsulta() {
     setConsulta({
       ...consulta,
@@ -88,18 +73,9 @@ export default function App() {
           <Text style={styles.subtitulo}>Consulta #{consulta.id}</Text>
         </View>
 
-        {/* 
-          Componente ConsultaCard
-          
-          Veja como ficou mais simples!
-          Antes: ~100 linhas de JSX no App.tsx
-          Agora: 1 componente reutilizável
-          
-          Props:
-          - consulta: objeto com todos os dados
-          - onConfirmar: função a ser chamada ao confirmar
-          - onCancelar: função a ser chamada ao cancelar
-        */}
+        {
+
+        }
         <ConsultaCard
           consulta={consulta}
           onConfirmar={confirmarConsulta}
@@ -111,17 +87,7 @@ export default function App() {
   );
 }
 
-/**
- * Estilos do App
- * 
- * Note que removemos TODOS os estilos do card!
- * Eles agora estão encapsulados no componente ConsultaCard.
- * 
- * App.tsx agora só tem estilos de layout geral:
- * - Container principal
- * - Cabeçalho
- * - Rodapé
- */
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
