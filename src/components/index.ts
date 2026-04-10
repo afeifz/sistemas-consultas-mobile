@@ -1,3 +1,3 @@
-export { default as ConsultaCard } from "./ConsultaCard";
-// mudança
+export { default as ConsultaCard } from "./consultaCard";
+// mudança no texto
 
