@@ -14,7 +14,7 @@ import {
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useAuth } from "../contexts/AuthContext";
-import consultasService from "../services/consultasService";
+import consultasService from "../services/consultaServices";
 import { Consulta } from "../interfaces/consulta";
 
 export default function Admin({ navigation }: any) {

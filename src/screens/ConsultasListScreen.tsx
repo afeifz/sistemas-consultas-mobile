@@ -14,7 +14,7 @@ import {
  Alert,
 } from "react-native";
 import { useAuth } from "../contexts/AuthContext";
-import consultasService from "../services/consultasService";
+import consultasService from "../services/consultaServices";
 import { Consulta } from "../interfaces/consulta";
 import { StatusConsulta } from "../types/statusConsulta";
 import { ConsultaCard, Loading, EmptyState } from "../components";
